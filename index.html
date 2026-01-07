@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMMERSION | 个人空间</title>
+    <title>瓶子 | 个人空间</title>
     
     <!-- 引入高级字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,9 +43,11 @@
             object-fit: cover; /* 保证图片铺满不拉伸 */
             z-index: -1;
     
-            /* 这里的 scale(1.1) 和 transition 是为了做呼吸感效果 */
-            transform: scale(1.0); 
-            transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            /* 让图片自己缓慢呼吸，周期 20秒 */
+            animation: breathe 20s infinite ease-in-out;
+    
+            /* 点击进入时的过渡依然保留 */
+            transition: filter 1s ease; 
         }
 
         /* 图片遮罩，保证文字可读性 */
@@ -235,6 +237,13 @@
             z-index: -1;
         }
         .card:hover img { opacity: 0.8; }
+
+        /* 定义一个缓慢缩放的动画 */
+        @keyframes breathe {
+            0% { transform: scale(1.0); }
+            50% { transform: scale(1.05); } /* 放大 5% */
+            100% { transform: scale(1.0); }
+        }
 
         /* --- 动画关键帧 --- */
         @keyframes pulse {
