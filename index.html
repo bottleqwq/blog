@@ -52,7 +52,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
             z-index: 0;
             pointer-events: none;
         }
@@ -81,7 +81,7 @@
 
         #clock {
             font-family: var(--font-display);
-            font-size: clamp(4rem, 10vw, 8rem);
+            font-size: clamp(2rem, 6vw, 8rem);
             font-weight: 400;
             line-height: 1;
             letter-spacing: -2px;
@@ -147,7 +147,7 @@
             opacity: 1;
             pointer-events: auto;
             backdrop-filter: blur(25px); /* 激活高斯模糊 */
-            background: rgba(10, 10, 10, 0.75); /* 激活深色背景遮罩 */
+            background: rgba(10, 10, 10, 0.5); /* 激活深色背景遮罩 */
             padding-top: 0; /* 内容上滑归位 */
         }
 
@@ -256,7 +256,7 @@
     <!-- 1. 全屏背景视频 (使用 Pixabay 的免费高质量视频) -->
     <video id="bg-video" autoplay muted loop playsinline>
         <!-- 这里的视频链接是一个抽象的流动液体，非常适合做高级感背景 -->
-        <source src="https://cdn.pixabay.com/video/2019/04/23/23011-332483109_large.mp4" type="video/mp4">
+        <source src="主页视频/黎歌格子 2.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
     <div class="video-overlay"></div>
@@ -267,7 +267,7 @@
             <div id="clock">00:00</div>
             <div id="date">LOADING DATE...</div>
         </div>
-        <div class="enter-hint">Click anywhere to enter</div>
+        <div class="enter-hint">点击任意位置进入</div>
     </div>
 
     <!-- 3. 毛玻璃内容层 -->
