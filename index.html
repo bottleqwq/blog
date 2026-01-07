@@ -33,19 +33,22 @@
             width: 100vw;
         }
 
-        /* --- 1. 背景视频层 --- */
-        #bg-video {
+        /* --- 1. 背景图片层 --- */
+        #bg-img {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* 保证图片铺满不拉伸 */
             z-index: -1;
+    
+            /* 这里的 scale(1.1) 和 transition 是为了做呼吸感效果 */
+            transform: scale(1.0); 
             transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* 视频遮罩，保证文字可读性 */
+        /* 图片遮罩，保证文字可读性 */
         .video-overlay {
             position: fixed;
             top: 0;
@@ -76,7 +79,7 @@
 
         .time-display {
             text-align: center;
-            margin-top: 10vh;
+            margin-top: 5vh;
         }
 
         #clock {
@@ -133,8 +136,8 @@
         }
 
         /* --- 4. 激活状态 (JS控制) --- */
-        body.active #bg-video {
-            transform: scale(1.1); /* 视频轻微放大 */
+        body.active #bg-img {
+            transform: scale(1.1); /* 点击后放大一点点，增加沉浸感 */
         }
 
         body.active .landing-screen {
@@ -253,12 +256,8 @@
 </head>
 <body>
 
-    <!-- 1. 全屏背景视频 (使用 Pixabay 的免费高质量视频) -->
-    <video id="bg-video" autoplay muted loop playsinline>
-        <!-- 这里的视频链接是一个抽象的流动液体，非常适合做高级感背景 -->
-        <source src="主页视频/酒狐摇尾壁纸无BGM.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
+    <!-- 1. 全屏背景图片 -->
+    <img id="bg-img" src="主页图片/bg.jpeg" alt="Background">
     <div class="video-overlay"></div>
 
     <!-- 2. 初始着陆页 (时间与日期) -->
