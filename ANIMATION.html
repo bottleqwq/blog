@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANIMATION | 动漫</title>
+    <!-- 引入同一个外部 CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入高级字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <style>
+        /* 强制让这个页面的毛玻璃层直接显示 */
+        .glass-overlay {
+            opacity: 1 !important;        /* 强制不透明 */
+            pointer-events: auto !important; /* 允许鼠标点击 */
+            padding-top: 0 !important;    /* 位置归位 */
+            background: rgba(10, 10, 10, 0.6); /* 保持深色背景 */
+            backdrop-filter: blur(25px);  /* 保持模糊 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景图 (建议和主页一样，或者换一张相关的) -->
+    <img id="bg-img" src="主页图片/bg.jpeg" alt="Background">
+
+    <!-- 这里的毛玻璃层是直接显示的 -->
+    <div class="glass-overlay">
+        <div class="content-container">
+            
+            <!-- 头部 -->
+            <header class="header">
+                <div>
+                    <h1>我喜欢的动漫</h1>
+                    <p style="color: var(--text-sub); margin-top: 5px;">二次元的幻想乡</p>
+                </div>
+                <!-- 关键：返回主页的链接 -->
+                <a href="index.html" class="back-btn">← 返回主页</a>
+            </header>
+
+            <!-- 新的 Bento Grid (照片墙布局) -->
+            <div class="bento-grid">
+                <!-- 照片 1 -->
+                <div class="card span-2 span-row-2">
+                    <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2000&auto=format&fit=crop">
+                </div>
+                <!-- 照片 2 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop">
+                </div>
+                <!-- 照片 3 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop">
+                </div>
+                <!-- 照片 4 -->
+                <div class="card span-2">
+                    <img src="https://images.unsplash.com/photo-1501854140884-074cf27f606b?q=80&w=2000&auto=format&fit=crop">
+                </div>
+                <!-- 照片 5 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000&auto=format&fit=crop">
+                </div>
+            </div>
+
+            <footer style="margin-top: 4rem; text-align: center; color: var(--text-sub); font-size: 0.8rem;">
+                很高兴认识你.
+            </footer>
+        </div>
+    </div>
+
+</body>
+</html>
