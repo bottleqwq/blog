@@ -10,116 +10,299 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-    <style>
-        /* 强制让这个页面的毛玻璃层直接显示 */
-        .glass-overlay {
-            opacity: 1 !important;        /* 强制不透明 */
-            pointer-events: auto !important; /* 允许鼠标点击 */
-            padding-top: 0 !important;    /* 位置归位 */
-            background: rgba(10, 10, 10, 0.6); /* 保持深色背景 */
-            backdrop-filter: blur(25px);  /* 保持模糊 */
-        }
-    </style>
 </head>
 <body>
 
-    <!-- 背景图 (建议和主页一样，或者换一张相关的) -->
+    <!-- 背景图 -->
     <img id="bg-img" src="主页图片/bg.jpeg" alt="Background">
+    
+    <!-- 1. 第一层：分类选择页 (代替原来的时钟页) -->
+    <!-- 注意：这里的 id 依然叫 landing-trigger 是为了复用 CSS 中的定位逻辑，但我们会修改 JS 取消全屏点击 -->
+    <div class="landing-screen" id="category-layer">
+        
+        <!-- 返回主页按钮 -->
+        <a href="index.html" class="top-back-btn">← 返回主页</a>
 
-    <!-- 这里的毛玻璃层是直接显示的 -->
-    <div class="glass-overlay">
-        <div class="content-container">
-            
-            <!-- 头部 -->
-            <header class="header">
-                <div>
-                    <h1>我玩过的游戏</h1>
-                    <p style="color: var(--text-sub); margin-top: 5px;">二次元的幻想乡</p>
-                </div>
-                <!-- 关键：返回主页的链接 -->
-                <a href="index.html" class="back-btn">← 返回主页</a>
-            </header>
+        <div style="margin-bottom: 40px; text-align: center;">
+            <h1 style="font-size: 3rem; margin-bottom: 10px;">玩过的游戏</h1>
+            <p>选择一个游戏类别以开始</p>
+        </div>
 
-            <div class="bento-grid">
-
-                <div class="card span-2 span-row-2">
-                    <img src="动漫图片/刀剑神域.jpeg">
-                    <h3>刀剑神域</h3>
-                    <p style="color: #ccc; font-size: 0.9rem; margin-top: 1rem;">最爱的入坑番！</p>
-                </div>
-
-                <div class="card span-row-2">
-                    <img src="动漫图片/RE0.jpg">
-                    <h3>Re：从零开始的异世界生活</h3>
-                    <p style="color: #ccc; font-size: 0.9rem; margin-top: 1rem;">爱蜜莉亚！</p>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop">
-                    <h3>我的三体</h3>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop">
-                    <h3>此花亭奇谭</h3>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1501854140884-074cf27f606b?q=80&w=2000&auto=format&fit=crop">
-                    <h3>孤独摇滚</h3>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000&auto=format&fit=crop">
-                    <h3>终结的炽天使</h3>
-                </div>
-
-                <div class="card">
-                    <h3>Charlotte</h3>
-                </div>
-
-                <div class="card">
-                    <h3>狐妖小红娘</h3>
-                </div>
-
-                <div class="card">
-                    <h3>OVERLORD</h3>
-                </div>
-
-                <div class="card">
-                    <h3>寄生兽：生命的准则</h3>
-                </div>
-
-                <div class="card">
-                    <h3>进击的巨人</h3>
-                </div>
-
-                <div class="card">
-                    <h3>可塑性记忆</h3>
-                </div>
-
-                <div class="card">
-                    <h3>埃罗芒阿老师</h3>
-                </div>
-
-                <div class="card">
-                    <h3>葬送的芙莉莲</h3>
-                </div>
-
-                <div class="card">
-                    <h3>死亡笔记</h3>
-                </div>
-
-                <div class="card">
-                    <h3>暂时想起来这么多，等哪天梦到了再补</h3>
+        <div class="category-menu">
+            <!-- 类别 1: 单机 -->
+            <div class="category-card" onclick="openCategory('single')">
+                <img src="游戏图片/单机游戏.png" alt="单机">
+                <div class="category-content">
+                    <div class="category-title">单机游戏</div>
+                    <div class="category-desc">Single Player</div>
                 </div>
             </div>
 
+            <!-- 类别 2: 网游 -->
+            <div class="category-card" onclick="openCategory('online')">
+                <img src="游戏图片/网络游戏.jpg" alt="网游">
+                <div class="category-content">
+                    <div class="category-title">网络游戏</div>
+                    <div class="category-desc">Online Games</div>
+                </div>
+            </div>
+
+            <!-- 类别 3: Galgame -->
+            <div class="category-card" onclick="openCategory('galgame')">
+                <img src="游戏图片/Galgame.jpg" alt="Galgame">
+                <div class="category-content">
+                    <div class="category-title">GALGAME</div>
+                    <div class="category-desc">Visual Novel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 第二层：具体内容层 (毛玻璃) -->
+    <div class="glass-overlay">
+        <div class="content-container">
+            <!-- 头部 -->
+            <header class="header">
+                <div>
+                    <!-- 这里用 span 做动态标题 -->
+                    <h1 id="page-title">游戏列表</h1>
+                    <p style="color: var(--text-sub); margin-top: 5px;">虚拟世界的冒险记录</p>
+                </div>
+                <!-- 点击这个按钮，不是跳转页面，而是回到分类选择 -->
+                <div class="close-btn" onclick="closeCategory()">返回分类</div>
+            </header>
+
+            <!-- 这里的 grid 不再直接放卡片，而是放三个容器 -->
+            <div id="main-grid-container">
+
+                <!-- 容器 A: 单机游戏列表 -->
+                <div id="list-single" class="game-grid-section">
+                    <div class="card span-2 span-row-2">
+                        <img src="卡片图片/游戏卡片.jpg">
+                        <h3>Minecraft</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">生活就像MC里的矿洞，你永远不知道你看到的是一堆发光地衣还是一堆钻石</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/251570/766ed3debfe7b894fbb5650aa89fa213fa254d5d/ss_766ed3debfe7b894fbb5650aa89fa213fa254d5d.1920x1080.jpg?t=1766024790">
+                        <h3>七日杀</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1623730/ss_a9fa84f0c21bc536f00925ab4586e8c4f587c2b7.1920x1080.jpg?t=1766121276">
+                        <h3>幻兽帕鲁</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/header.jpg?t=1764833720">
+                        <h3>杀戮尖塔</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好牌多抓</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2103140/ss_5e29086fec1e37bdff28e9b27dc34fbd00295d44.1920x1080.jpg?t=1767090035">
+                        <h3>魔法工艺</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3167020/header_schinese.jpg?t=1767856957">
+                        <h3>逃离鸭克夫</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1942280/4f3467b7993c5c86a0bf789a646b800a808347d2/header_schinese.jpg?t=1766064129">
+                        <h3>土豆兄弟</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/ss_b887651a93b0525739049eb4194f633de2df75be.1920x1080.jpg?t=1754692865">
+                        <h3>星露谷物语</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">感觉有点无聊……</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/header.jpg?t=1758246558">
+                        <h3>怪物猎人：世界</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩的时间很短</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601150/header.jpg?t=1701395090">
+                        <h3>鬼泣5</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩的时间很短</p>
+                    </div>
+                    <div class="card">
+                        <img src="游戏图片/黑神话悟空.jpg">
+                        <h3>黑神话：悟空</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩的时间很短</p>
+                    </div>
+                    <div class="card">
+                        <img src="游戏图片/戴森球计划.jpg">
+                        <h3>戴森球计划</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">工厂类型爱玩，但是刚买最近没时间玩</p>
+                    </div>
+                    <div class="card">
+                        <h3>神经鹅</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">有意思，但是刚买最近没时间玩</p>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.steamusercontent.com/ugc/18203579485301583561/E1B6F98A023B38A97C3E53B48A86E4B0E39FE3A1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false">
+                        <h3>米塔</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩过一段时间</p>
+                    </div>
+                    <div class="card">
+                        <h3>胡闹厨房2</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">没时间联机</p>
+                    </div>
+                    <div class="card">
+                        <h3>双影奇境</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">和朋友玩过一段</p>
+                    </div>
+                    <div class="card">
+                        <h3>极限竞速：地平线4</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩的时间很短</p>
+                    </div>
+                    <div class="card">
+                        <img src="游戏图片/饥荒.jpg">
+                        <h3>饥荒</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">和泰拉瑞亚一样不会玩</p>
+                    </div>
+                    <div class="card">
+                        <h3>元气骑士</h3>
+                    </div>
+                    <div class="card">
+                        <img src="游戏图片/龟龟潜海记.jpg">
+                        <h3>龟龟潜海记</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">增量游戏好玩爱玩</p>
+                    </div>
+                    <div class="card">
+                        <h3>拣爱</h3>
+                    </div>
+                    <div class="card span-2">
+                        <!-- 泰拉瑞亚图片 -->
+                        <h3>一些小众的就不写了</h3>
+                    </div>
+                </div>
+
+                <!-- 容器 B: 网络游戏列表 -->
+                <div id="list-online" class="game-grid-section">
+                    <div class="card">
+                        <img src="动漫图片/刀剑神域.jpeg">
+                        <h3>原神</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">原神牛逼（已退游）</p>
+                    </div>
+                    <div class="card">
+                        <h3>王者荣耀</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">现在基本不玩了</p>
+                    </div>
+                    <div class="card">
+                        <h3>三角洲行动</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">朋友叫会玩</p>
+                    </div>
+                    <div class="card">
+                        <h3>金铲铲之战</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">现在基本不玩了</p>
+                    </div>
+                    <div class="card">
+                        <h3>VRChat</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">现在基本不玩了</p>
+                    </div>
+                    <div class="card">
+                        <h3>公主连结</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">已退游</p>
+                    </div>
+                    <div class="card">
+                        <h3>明日方舟</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">不玩了</p>
+                    </div>
+                    <div class="card">
+                        <h3>月圆之夜</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">打牌好玩</p>
+                    </div>
+                    <div class="card">
+                        <h3>奶块</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">已退游</p>
+                    </div>
+                    <div class="card">
+                        <h3>百分之一</h3>
+                        <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">已退游</p>
+                    </div>
+                    <div class="card">
+                        <!-- 宝可梦图片 -->
+                        <h3>一些小众的就不写了，想到再写</h3>
+                    </div>
+                </div>
+
+                <!-- 容器 C: GALGAME列表 -->
+                <div id="list-galgame" class="game-grid-section">
+                    <div class="card span-2 span-row-2">
+                        <img src="动漫图片/夏洛特.jpg">
+                        <h3>ATRI -My Dear Moments-</h3>
+                    </div>
+                    <div class="card span-2 span-row-2">
+                        <h3>千恋万花</h3>
+                    </div>
+                    <div class="card span-2 span-row-2">
+                        <h3>饿殍：明末千里行</h3>
+                    </div>
+                    <div class="card span-2 span-row-2">
+                        <h3>GINKA</h3>
+                    </div>
+                    <div class="card span-2 span-row-2">
+                        <h3>Fox Hime Zero</h3>
+                    </div>                                        
+                    <div class="card span-2 span-row-2">
+                        <h3>要来点百合吗 Love Yuri</h3>
+                    </div>
+                </div>
+
+            </div>
+
             <footer style="margin-top: 4rem; text-align: center; color: var(--text-sub); font-size: 0.8rem;">
-                很高兴认识你.
+                Game Over.
+            </footer>
+            <footer style="margin-top: 1rem; text-align: center; color: var(--text-sub); font-size: 0.8rem;">
+                © 2026 瓶子|个人空间
             </footer>
         </div>
     </div>
 
+    <script>
+        const body = document.body;
+        const pageTitle = document.getElementById('page-title');
+        
+        // 1. 打开具体的分类
+        function openCategory(type) {
+            // 先隐藏所有列表
+            document.querySelectorAll('.game-grid-section').forEach(el => {
+                el.classList.remove('active-list');
+            });
+
+            // 根据点击的类型显示对应列表，并修改标题
+            if(type === 'single') {
+                document.getElementById('list-single').classList.add('active-list');
+                pageTitle.textContent = "单机游戏";
+            } else if (type === 'online') {
+                document.getElementById('list-online').classList.add('active-list');
+                pageTitle.textContent = "网络游戏";
+            } else if (type === 'galgame') {
+                document.getElementById('list-galgame').classList.add('active-list');
+                pageTitle.textContent = "GALGAME";
+            }
+
+            // 触发动画（类似于主页的进入效果）
+            body.classList.add('active');
+        }
+
+        // 2. 返回分类选择
+        function closeCategory() {
+            // 移除 active 类，页面会缩回去显示第一层
+            body.classList.remove('active');
+        }
+
+        // 3. 移动端兼容 (和主页一样)
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        window.addEventListener('resize', setVH);
+        setVH();
+    </script>
 </body>
 </html>

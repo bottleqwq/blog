@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>瓶子 | 个人空间</title>
+    <!-- 引入 RemixIcon 图标库 -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
     <!-- 引入外部 CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- 引入高级字体 -->
@@ -33,14 +35,38 @@
             <header class="header">
                 <div>
                     <h1>欢迎来到我的个人空间</h1>
-                    <p style="color: var(--text-sub); margin-top: 5px;">瓶子/bottleqwq/白兮希</p>
+                    <p style="color: var(--text-sub); margin-top: 5px;">下面的卡片可以点击哦</p>
                 </div>
-                <div class="close-btn" onclick="toggleView()">返回</div>
+                <!-- 右侧操作栏 -->
+                <div class="header-actions">
+                    <!-- GitHub 按钮 -->
+                    <a href="https://github.com/bottleqwq" target="_blank" class="social-btn" title="GitHub">
+                        <i class="ri-github-line"></i>
+                    </a>
+                    <!-- QQ 按钮 -->
+                    <a href="javascript:void(0)" onclick="openModal('qq')" class="social-btn" title="联系QQ">
+                        <i class="ri-qq-line"></i>
+                    </a>
+                    <!-- 微信 按钮 -->
+                    <a href="javascript:void(0)" onclick="openModal('wechat')" class="social-btn" title="联系微信">
+                        <i class="ri-wechat-line"></i>
+                    </a>
+                    <!-- B站 按钮 -->
+                    <a href="https://space.bilibili.com/289808097" target="_blank" class="social-btn" title="Bilibili">
+                        <i class="ri-bilibili-line"></i>
+                    </a>
+                    <!-- 抖音 按钮 -->
+                    <a href="https://v.douyin.com/F_76Sh5LQR4/ 9@5.com :1pm" target="_blank" class="social-btn" title="抖音">
+                        <i class="ri-tiktok-fill"></i>
+                    </a>
+
+                    <div class="close-btn" onclick="toggleView()">返回</div>
+                </div>
             </header>
 
             <!-- 核心：便当盒布局 -->
             <div class="bento-grid">
-                <!-- 卡片 1: 静态视觉大图 -->
+                <!-- 卡片 1: 自我介绍 -->
                 <div class="card span-2 span-row-2" style="cursor: default; transition: none;">
                     <img src="卡片图片/介绍卡片.jpg">
                     <div class="card-tag">INTRODUCTION</div>
@@ -53,14 +79,14 @@
                     <h3>可能雷到你的点：重度AI使用者</h3>
                 </div>
 
-                <!-- 卡片 2: 动漫 -->
+                <!-- 卡片 2: 喜欢的动漫 -->
                 <a href="ANIMATION.html" class="card interactive">
                     <img src="卡片图片/动漫卡片.jpeg">
                     <div class="card-tag">ANIMATION</div>
                     <h3>喜欢的动漫</h3>
                 </a>
 
-                <!-- 卡片 3: 游戏 -->
+                <!-- 卡片 3: 玩过的游戏 -->
                 <a href="GAME.html" class="card interactive">
                     <img src="卡片图片/游戏卡片.jpg">
                     <div class="card-tag">GAME</div>
@@ -69,7 +95,7 @@
 
                 <!-- 卡片 4: 制作的游戏 -->
                 <div class="card span-2 interactive">
-                    <div class="card-tag">Project</div>
+                    <div class="card-tag">WORK</div>
                     <h3>制作的游戏</h3>
                 </div>
 
@@ -79,16 +105,61 @@
                     <h3>调校的歌曲</h3>
                 </div>
 
-                <!-- 卡片 6: Live2d -->
+                <!-- 卡片 6: Live2d作品 -->
                 <div class="card interactive">
-                    <div class="card-tag">Live2d</div>
-                    <h3>Live2d</h3>
+                    <div class="card-tag">LIVE2D</div>
+                    <h3>Live2d作品</h3>
+                </div>
+
+                <!-- 卡片 7: 制作的项目 -->
+                <div class="card span-2 interactive">
+                    <div class="card-tag">PROJECT</div>
+                    <h3>制作的项目</h3>
+                </div>
+
+                <!-- 卡片 8: 曾经的辉煌 -->
+                <div class="card interactive">
+                    <div class="card-tag">STREAMER</div>
+                    <h3>曾经的辉煌</h3>
+                </div>
+
+                <!-- 卡片 9: 其他 -->
+                <div class="card interactive">
+                    <div class="card-tag">REST</div>
+                    <h3>其他</h3>
                 </div>
             </div>
             
             <footer style="margin-top: 4rem; text-align: center; color: var(--text-sub); font-size: 0.8rem;">
                 很高兴认识你.
             </footer>
+            <footer style="margin-top: 1rem; text-align: center; color: var(--text-sub); font-size: 0.8rem;">
+                © 2026 瓶子|个人空间
+            </footer>
+        </div>
+    </div>
+    <!-- 4. 社交账号弹窗 (通用结构) -->
+    <div id="social-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">联系方式</h3>
+                <div class="modal-close" onclick="closeModal(event, true)">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+        
+            <!-- 二维码图片容器 -->
+            <div class="qr-container">
+                <img id="modal-qr" src="" alt="QR Code">
+            </div>
+        
+            <!-- 账号信息 -->
+            <div class="account-info">
+                <span id="modal-desc">ID: </span>
+               <span id="modal-id" class="highlight-text"></span>
+               <!-- 复制按钮 -->
+              <button class="copy-btn" onclick="copyText()">复制</button>
+            </div>
         </div>
     </div>
 
@@ -128,6 +199,57 @@
         }
         window.addEventListener('resize', setVH);
         setVH();
+
+        // --- 4. 社交弹窗逻辑 ---
+
+    // 定义数据配置
+    const socialData = {
+        qq: {
+            title: "添加我的 QQ",
+            id: "1523099941",
+            qr: "联系方式/QQ.png"
+        },
+        wechat: {
+            title: "添加我的 微信",
+            id: "bottle_qwq",
+            qr: "联系方式/微信.png"
+        }
+    };
+
+    const modal = document.getElementById('social-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalId = document.getElementById('modal-id');
+    const modalQr = document.getElementById('modal-qr');
+
+    // 打开弹窗
+    function openModal(type) {
+        const data = socialData[type];
+        if(!data) return;
+
+        modalTitle.textContent = data.title;
+        modalId.textContent = data.id;
+        modalQr.src = data.qr; // 动态切换图片
+
+        modal.classList.add('active');
+    }
+
+    // 关闭弹窗
+    function closeModal(event, force = false) {
+        // 只有点击遮罩层(空白处)或关闭按钮时才关闭，点击内容区域不关闭
+        if (force || event.target === modal) {
+           modal.classList.remove('active');
+        }
+    }
+
+    // 复制功能
+    function copyText() {
+        const text = document.getElementById('modal-id').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+           alert("账号已复制到剪贴板！");
+        }).catch(err => {
+          console.error('复制失败:', err);
+        });
+    }
     </script>
 </body>
 </html>
