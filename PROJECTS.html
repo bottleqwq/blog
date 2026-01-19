@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECTS | 制作的项目</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入图标库 -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <style>
+        .glass-overlay {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            padding-top: 0 !important;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(25px);
+        }
+    </style>
+</head>
+<body>
+
+    <img id="bg-img" src="主页图片/bg.jpeg" alt="Background">
+
+    <div class="glass-overlay">
+        <div class="content-container">
+            
+            <header class="header">
+                <div>
+                    <h1>制作的项目</h1>
+                    <p style="color: var(--text-sub); margin-top: 5px;">代码与灵感的结晶</p>
+                </div>
+                <a href="index.html" class="back-btn">← 返回主页</a>
+            </header>
+
+            <!-- 列表区域：点击卡片触发 openDetail() -->
+            <div class="bento-grid">
+
+                <!-- 项目 1 -->
+                <div class="card interactive span-2 span-row-2" onclick="openDetail('project1')">
+                    <img src="项目图片/AI卡牌生成器.jpg"> 
+                    <div class="card-tag">Python / AI / Web</div>
+                    <h3>AI卡牌生成器</h3>
+                    <p style="color: #ccc; font-size: 0.9rem; margin-top: 10px;"></p>
+                </div>
+
+                <!-- 项目 2 -->
+                <div class="card interactive span-2" onclick="openDetail('project2')">
+                    <img src="项目图片/项目2封面.jpg"> 
+                    <div class="card-tag">Web / Vue3</div>
+                    <h3>个人博客系统</h3>
+                </div>
+
+                <!-- 项目 3 -->
+                <div class="card interactive" onclick="openDetail('project3')">
+                    <img src="项目图片/项目3封面.jpg">
+                    <div class="card-tag">Unity</div>
+                    <h3>BongoCat桌宠</h3>
+                </div>
+
+                <!-- 项目 4 -->
+                <div class="card interactive" onclick="openDetail('project4')">
+                    <div class="card-tag">Tool</div>
+                    <h3>广告拦截器</h3>
+                </div>
+
+                <!-- 项目 5 -->
+                <div class="card interactive" onclick="openDetail('project4')">
+                    <div class="card-tag">Tool</div>
+                    <h3>C盘一键清理工具</h3>
+                </div>
+
+                <!-- 项目 6 -->
+                <div class="card interactive" onclick="openDetail('project4')">
+                    <div class="card-tag">Tool</div>
+                    <h3>网页提取神器</h3>
+                </div>
+            </div>
+
+            <footer style="margin-top: 4rem; text-align: center; color: var(--text-sub); font-size: 0.8rem;">
+                © 2026 瓶子|个人空间
+            </footer>
+        </div>
+    </div>
+
+    <!-- === 详情大弹窗 === -->
+    <div id="detail-modal" class="modal-overlay" onclick="closeDetail(event)">
+        <div class="modal-large-content">
+            <!-- 关闭按钮 -->
+            <div style="position: absolute; top: 20px; right: 20px; z-index: 10; cursor: pointer;" onclick="closeDetail(event, true)">
+                <i class="ri-close-circle-fill" style="font-size: 2rem; color: rgba(255,255,255,0.8);"></i>
+            </div>
+
+            <div class="project-detail-layout">
+                <!-- 左侧：媒体区 (JS 动态填充) -->
+                <div class="project-media" id="modal-media">
+                    <!-- 视频或图片将在这里生成 -->
+                </div>
+
+                <!-- 右侧：信息区 -->
+                <div class="project-info">
+                    <div class="project-meta" id="modal-tags">
+                        <!-- 标签将在这里生成 -->
+                    </div>
+                    <h2 class="project-title" id="modal-title">标题</h2>
+                    <p class="project-desc" id="modal-desc">
+                        描述内容...
+                    </p>
+
+                    <div class="project-actions" id="modal-actions">
+                        <!-- 按钮将在这里生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 数据配置区 (这是你最需要修改的地方) ---
+        // 注意：B站 iframe 需要 high_quality=1 和 allowfullscreen
+        const projectsData = {
+            'project1': {
+                title: "AI卡牌生成器",
+                tags: ["Python", "AI", "Web"],
+                desc: "选择上传一张图片，就能自动生成卡牌！还可以挑战Boss！\n现在服务器过期了，网站没有了",
+                // 这是一个 B站视频 iframe 示例
+                mediaType: 'video', 
+                mediaContent: '<iframe src="项目图片/AI卡牌生成器最新版.mp4"></iframe>',
+                links: [
+                ]
+            },
+            'project2': {
+                title: "个人博客系统",
+                tags: ["HTML5", "CSS3", "JavaScript"],
+                desc: "你现在看到的这个网站就是本项目的一部分。\n采用了 Glassmorphism 设计风格，纯手写 CSS 动画，未依赖庞大的 UI 库。",
+                mediaType: 'image',
+                mediaContent: '<img src="主页图片/bg.jpeg" style="width:100%; height:100%; object-fit:cover;">',
+                links: [
+                    { text: "查看代码", url: "#", type: "secondary" }
+                ]
+            },
+            'project3': {
+                title: "Unity 像素游戏 Demo",
+                tags: ["Unity", "C#", "Pixel Art"],
+                desc: "跟着教程做的一个横版闯关游戏，实现了基本的移动、跳跃、攻击和简单的敌人 AI。",
+                mediaType: 'video',
+                // 如果你有本地视频，使用 <video> 标签：
+                // mediaContent: '<video controls src="视频/demo.mp4" style="width:100%; height:100%; object-fit:contain;"></video>',
+                mediaContent: '<div style="color:#aaa;">暂无视频演示，请脑补</div>', 
+                links: []
+            },
+             'project4': {
+                title: "自动签到脚本",
+                tags: ["Python", "Selenium"],
+                desc: "为了解放双手写的一个自动化脚本。",
+                mediaType: 'image',
+                mediaContent: '<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover;">', 
+                links: [
+                    { text: "获取脚本", url: "#", type: "primary" }
+                ]
+            }
+        };
+
+        const modal = document.getElementById('detail-modal');
+        const modalMedia = document.getElementById('modal-media');
+        const modalTitle = document.getElementById('modal-title');
+        const modalTags = document.getElementById('modal-tags');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalActions = document.getElementById('modal-actions');
+
+        // 打开弹窗
+        function openDetail(id) {
+            const data = projectsData[id];
+            if(!data) return;
+
+            // 1. 设置标题和描述
+            modalTitle.textContent = data.title;
+            modalDesc.innerText = data.desc; // innerText 保留换行符
+
+            // 2. 生成标签
+            modalTags.innerHTML = data.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join('');
+
+            // 3. 设置媒体 (视频或图片)
+            if(data.mediaType === 'video') {
+                modalMedia.innerHTML = `<div class="video-wrapper">${data.mediaContent}</div>`;
+            } else {
+                modalMedia.innerHTML = data.mediaContent;
+            }
+
+            // 4. 生成按钮
+            modalActions.innerHTML = data.links.map(link => `
+                <a href="${link.url}" target="_blank" class="action-btn ${link.type === 'primary' ? 'btn-primary' : 'btn-secondary'}">
+                    ${link.text} <i class="ri-arrow-right-up-line"></i>
+                </a>
+            `).join('');
+
+            modal.classList.add('active');
+        }
+
+        // 关闭弹窗
+        function closeDetail(event, force = false) {
+            if (force || event.target === modal) {
+                modal.classList.remove('active');
+                
+                // 关键：关闭时清空媒体区，以停止视频播放（否则关掉弹窗声音还在响）
+                setTimeout(() => {
+                    modalMedia.innerHTML = '';
+                }, 300); // 等动画播完再清空
+            }
+        }
+    </script>
+</body>
+</html>
