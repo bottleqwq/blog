@@ -48,21 +48,22 @@
 
                 <!-- 项目 2 -->
                 <div class="card interactive span-2" onclick="openDetail('project2')">
-                    <img src="项目图片/项目2封面.jpg"> 
-                    <div class="card-tag">Web / Vue3</div>
-                    <h3>个人博客系统</h3>
+                    <img src="主页图片/bg.jpeg"> 
+                    <div class="card-tag">Web</div>
+                    <h3>个人博客</h3>
                 </div>
 
                 <!-- 项目 3 -->
                 <div class="card interactive" onclick="openDetail('project3')">
-                    <img src="项目图片/项目3封面.jpg">
-                    <div class="card-tag">Unity</div>
+                    <img src="项目图片/桌宠.png">
+                    <div class="card-tag">Python / AI</div>
                     <h3>BongoCat桌宠</h3>
                 </div>
 
                 <!-- 项目 4 -->
                 <div class="card interactive" onclick="openDetail('project4')">
-                    <div class="card-tag">Tool</div>
+                    <img src="项目图片/广告拦截器.png">
+                    <div class="card-tag">Tool / JavaScript</div>
                     <h3>广告拦截器</h3>
                 </div>
 
@@ -124,42 +125,34 @@
             'project1': {
                 title: "AI卡牌生成器",
                 tags: ["Python", "AI", "Web"],
-                desc: "选择上传一张图片，就能自动生成卡牌！还可以挑战Boss！\n现在服务器过期了，网站没有了",
-                // 这是一个 B站视频 iframe 示例
+                desc: "选择上传一张图片，就能自动生成卡牌！还可以挑战Boss！\n现在服务器过期了，网站没有了。",
                 mediaType: 'video', 
-                mediaContent: '<iframe src="项目图片/AI卡牌生成器最新版.mp4"></iframe>',
-                links: [
-                ]
+                mediaContent: '<video controls src="项目图片/AI卡牌生成器最新版.mp4" style="width:100%; height:100%; object-fit:contain;"></video>',
+                links: []
             },
             'project2': {
-                title: "个人博客系统",
-                tags: ["HTML5", "CSS3", "JavaScript"],
-                desc: "你现在看到的这个网站就是本项目的一部分。\n采用了 Glassmorphism 设计风格，纯手写 CSS 动画，未依赖庞大的 UI 库。",
+                title: "个人博客",
+                tags: ["Web"],
+                desc: "如你所见。\n采用了 Glassmorphism 设计风格，纯手写 CSS 动画，未依赖庞大的 UI 库。",
                 mediaType: 'image',
                 mediaContent: '<img src="主页图片/bg.jpeg" style="width:100%; height:100%; object-fit:cover;">',
-                links: [
-                    { text: "查看代码", url: "#", type: "secondary" }
-                ]
+                links: []
             },
             'project3': {
-                title: "Unity 像素游戏 Demo",
-                tags: ["Unity", "C#", "Pixel Art"],
-                desc: "跟着教程做的一个横版闯关游戏，实现了基本的移动、跳跃、攻击和简单的敌人 AI。",
+                title: "BongoCat桌宠",
+                tags: ["Python", "AI"],
+                desc: "纯Python写的一个小桌宠。\n点鼠标或是按键盘，桌宠都会左右敲击，还会记录敲击次数。\n有AI聊天功能，番茄钟和记事本。",
                 mediaType: 'video',
-                // 如果你有本地视频，使用 <video> 标签：
-                // mediaContent: '<video controls src="视频/demo.mp4" style="width:100%; height:100%; object-fit:contain;"></video>',
-                mediaContent: '<div style="color:#aaa;">暂无视频演示，请脑补</div>', 
+                mediaContent: '<video controls src="项目图片/桌宠.mp4" style="width:100%; height:100%; object-fit:contain;"></video>',
                 links: []
             },
              'project4': {
-                title: "自动签到脚本",
-                tags: ["Python", "Selenium"],
-                desc: "为了解放双手写的一个自动化脚本。",
+                title: "广告拦截器",
+                tags: ["浏览器扩展", "JavaScript"],
+                desc: "与市面上传统的规则拦截不同，这个插件可以直接右键不想看到的广告内容，选择屏蔽，以后就不会再看见这个广告了。",
                 mediaType: 'image',
-                mediaContent: '<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover;">', 
-                links: [
-                    { text: "获取脚本", url: "#", type: "primary" }
-                ]
+                mediaContent: '<img src="项目图片/广告拦截器.png" style="width:100%; height:100%; object-fit:contain;">',
+                links: []
             }
         };
 
