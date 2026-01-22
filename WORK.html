@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECTS | 制作的项目</title>
+    <title>WORK | 制作的游戏</title>
     <link rel="stylesheet" href="style.css">
     <!-- 引入图标库 -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
@@ -29,7 +29,7 @@
             
             <header class="header">
                 <div>
-                    <h1>制作的项目</h1>
+                    <h1>制作的游戏</h1>
                     <p style="color: var(--text-sub); margin-top: 5px;">代码与灵感的结晶</p>
                 </div>
                 <a href="index.html" class="back-btn">← 返回主页</a>
@@ -39,10 +39,10 @@
             <div class="bento-grid">
 
                 <!-- 项目 1 -->
-                <div class="card interactive span-2 span-row-2" onclick="openDetail('project1')">
-                    <img src="项目图片/AI卡牌生成器.jpg"> 
-                    <div class="card-tag">Python / AI / Web</div>
-                    <h3>AI卡牌生成器</h3>
+                <div class="card interactive span-2" onclick="openDetail('project1')">
+                    <img src="卡片图片/制作游戏卡片.png"> 
+                    <div class="card-tag">Unity / 已完成</div>
+                    <h3>合成大欧派</h3>
                     <p style="color: #ccc; font-size: 0.9rem; margin-top: 10px;"></p>
                 </div>
 
@@ -125,11 +125,17 @@
         // 注意：B站 iframe 需要 high_quality=1 和 allowfullscreen
         const projectsData = {
             'project1': {
-                title: "AI卡牌生成器",
-                tags: ["Python", "AI", "Web"],
-                desc: "选择上传一张图片，就能自动生成卡牌！还可以挑战Boss！\n现在服务器过期了，网站没有了。",
-                mediaType: 'video', 
-                mediaContent: '<video controls src="项目图片/AI卡牌生成器最新版.mp4" style="width:100%; height:100%; object-fit:contain;"></video>',
+                title: "合成大欧派",
+                tags: ["Unity", "已完成","双端"],
+                desc: "“合成大西瓜”的玩法\n合成更大的欧派会解锁新的动态涩图\n不够涩没办法了，毕竟自己不会画（动态效果是我自己做的），光是整这些美术素材就花了大部分时间，脚本代码倒是小问题。",
+                mediaType: 'carousel', 
+                images: [
+                    "卡片图片/制作游戏卡片.png",
+                    "制作游戏图片/合成大欧派1.jpeg",
+                    "制作游戏图片/合成大欧派2.jpeg",
+                    "制作游戏图片/合成大欧派3.jpeg",
+                    "制作游戏图片/合成大欧派4.png"
+                ],
                 links: []
             },
             'project2': {
@@ -181,46 +187,111 @@
         const modalDesc = document.getElementById('modal-desc');
         const modalActions = document.getElementById('modal-actions');
 
-        // 打开弹窗
-        function openDetail(id) {
-            const data = projectsData[id];
-            if(!data) return;
+// 全局变量，记录当前轮播图的索引
+    let currentSlideIndex = 0;
+    let currentImages = []; // 暂存当前打开项目的图片数组
 
-            // 1. 设置标题和描述
-            modalTitle.textContent = data.title;
-            modalDesc.innerText = data.desc; // innerText 保留换行符
+    // 1. 打开弹窗
+    function openDetail(id) {
+        const data = projectsData[id];
+        if(!data) return;
 
-            // 2. 生成标签
-            modalTags.innerHTML = data.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join('');
+        // 设置文本信息
+        document.getElementById('modal-title').textContent = data.title;
+        document.getElementById('modal-desc').innerText = data.desc;
+        document.getElementById('modal-tags').innerHTML = data.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join('');
+        
+        // 设置按钮
+        document.getElementById('modal-actions').innerHTML = data.links.map(link => `
+            <a href="${link.url}" target="_blank" class="action-btn ${link.type === 'primary' ? 'btn-primary' : 'btn-secondary'}">
+                ${link.text} <i class="ri-arrow-right-up-line"></i>
+            </a>
+        `).join('');
 
-            // 3. 设置媒体 (视频或图片)
-            if(data.mediaType === 'video') {
-                modalMedia.innerHTML = `<div class="video-wrapper">${data.mediaContent}</div>`;
-            } else {
-                modalMedia.innerHTML = data.mediaContent;
-            }
+        const mediaContainer = document.getElementById('modal-media');
+        
+        // --- 核心：根据类型生成内容 ---
+        if(data.mediaType === 'video') {
+            // 如果是视频
+            mediaContainer.innerHTML = `<div class="video-wrapper">${data.mediaContent}</div>`;
+        } 
+        else if (data.mediaType === 'carousel') {
+            // === 如果是轮播图 ===
+            currentImages = data.images; // 保存图片数组
+            currentSlideIndex = 0;       // 重置索引
+            
+            // 生成轮播图 HTML 结构
+            let slidesHtml = currentImages.map((img, index) => 
+                `<img src="${img}" class="carousel-slide ${index === 0 ? 'active' : ''}" id="slide-${index}">`
+            ).join('');
 
-            // 4. 生成按钮
-            modalActions.innerHTML = data.links.map(link => `
-                <a href="${link.url}" target="_blank" class="action-btn ${link.type === 'primary' ? 'btn-primary' : 'btn-secondary'}">
-                    ${link.text} <i class="ri-arrow-right-up-line"></i>
-                </a>
-            `).join('');
+            let indicatorsHtml = currentImages.map((_, index) => 
+                `<div class="indicator-dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})" id="dot-${index}"></div>`
+            ).join('');
 
-            modal.classList.add('active');
+            mediaContainer.innerHTML = `
+                <div class="carousel-container">
+                    ${slidesHtml}
+                    <!-- 左右按钮 (只有多张图时才显示) -->
+                    ${currentImages.length > 1 ? `
+                        <button class="carousel-btn btn-prev" onclick="switchSlide(-1)"><i class="ri-arrow-left-s-line"></i></button>
+                        <button class="carousel-btn btn-next" onclick="switchSlide(1)"><i class="ri-arrow-right-s-line"></i></button>
+                    ` : ''}
+                    <!-- 底部圆点 -->
+                    <div class="carousel-indicators">
+                        ${indicatorsHtml}
+                    </div>
+                </div>
+            `;
+        } 
+        else {
+            // 如果是单张图片 (兼容旧数据)
+            mediaContainer.innerHTML = data.mediaContent;
         }
 
-        // 关闭弹窗
-        function closeDetail(event, force = false) {
-            if (force || event.target === modal) {
-                modal.classList.remove('active');
-                
-                // 关键：关闭时清空媒体区，以停止视频播放（否则关掉弹窗声音还在响）
-                setTimeout(() => {
-                    modalMedia.innerHTML = '';
-                }, 300); // 等动画播完再清空
-            }
+        document.getElementById('detail-modal').classList.add('active');
+    }
+
+    // 2. 切换上一张/下一张
+    // step 为 1 代表下一张，-1 代表上一张
+    function switchSlide(step) {
+        if(currentImages.length <= 1) return;
+
+        // 移除当前的 active 类
+        document.getElementById(`slide-${currentSlideIndex}`).classList.remove('active');
+        document.getElementById(`dot-${currentSlideIndex}`).classList.remove('active');
+
+        // 计算新索引 (支持循环切换)
+        currentSlideIndex = (currentSlideIndex + step + currentImages.length) % currentImages.length;
+
+        // 添加新的 active 类
+        document.getElementById(`slide-${currentSlideIndex}`).classList.add('active');
+        document.getElementById(`dot-${currentSlideIndex}`).classList.add('active');
+    }
+
+    // 3. 点击圆点直接跳转
+    function goToSlide(index) {
+        if(index === currentSlideIndex) return;
+        
+        document.getElementById(`slide-${currentSlideIndex}`).classList.remove('active');
+        document.getElementById(`dot-${currentSlideIndex}`).classList.remove('active');
+
+        currentSlideIndex = index;
+
+        document.getElementById(`slide-${currentSlideIndex}`).classList.add('active');
+        document.getElementById(`dot-${currentSlideIndex}`).classList.add('active');
+    }
+
+    // 4. 关闭弹窗
+    function closeDetail(event, force = false) {
+        const modal = document.getElementById('detail-modal');
+        if (force || event.target === modal) {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('modal-media').innerHTML = '';
+            }, 300);
         }
+    }
     </script>
 </body>
 </html>
