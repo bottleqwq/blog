@@ -454,15 +454,342 @@ a.card {
     50% { opacity: 1; transform: scale(1.05); }
 }
 
-/* --- 响应式 --- */
-@media (max-width: 900px) {
-    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+/* =========================================
+   8. 移动端响应式设计 (Mobile Responsive)
+   ========================================= */
+
+/* --- 平板端 (≤ 1024px) --- */
+@media (max-width: 1024px) {
+    .content-container {
+        padding: 3rem 1.5rem;
+    }
+    .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 260px;
+        gap: 1.2rem;
+    }
     .span-2 { grid-column: span 2; }
+    .header h1 {
+        font-size: 1.6rem;
+    }
 }
-@media (max-width: 600px) {
-    #clock { font-size: 15vw; }
-    .bento-grid { grid-template-columns: 1fr; }
+
+/* --- 小平板/大手机 (≤ 768px) --- */
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 240px;
+        gap: 1rem;
+    }
+    .span-2 { grid-column: span 2; }
+    .span-row-2 { grid-row: span 1; }
+
+    .content-container {
+        padding: 2rem 1.2rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .social-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+    }
+    .close-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .landing-screen {
+        padding: 3rem 1.5rem;
+    }
+    #clock {
+        font-size: clamp(2.5rem, 10vw, 5rem);
+    }
+    #date {
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: 1.2rem;
+    }
+    .card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* 分类菜单 (游戏页) */
+    .category-card {
+        min-width: 200px;
+        height: 280px;
+    }
+    .category-title {
+        font-size: 1.6rem;
+    }
+
+    /* 返回按钮 */
+    .top-back-btn {
+        top: 20px;
+        left: 20px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    /* 游戏列表 */
+    .game-grid-section.active-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        grid-auto-rows: 220px;
+    }
+
+    /* 弹窗 */
+    .modal-content {
+        width: 85%;
+        max-width: 360px;
+        padding: 20px;
+    }
+    .modal-large-content {
+        width: 95%;
+        height: 85vh;
+    }
+
+    /* 视频弹窗 (LIVE2D) */
+    .modal-video-content {
+        width: 95%;
+        border-radius: 16px;
+    }
+
+    /* 项目详情弹窗内边距 */
+    .project-info {
+        padding: 20px;
+    }
+    .project-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* --- 手机端 (≤ 480px) --- */
+@media (max-width: 480px) {
+    body {
+        overflow: auto;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .content-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+        gap: 0.8rem;
+    }
     .span-2 { grid-column: span 1; }
+    .span-row-2 { grid-row: span 2; }
+
+    .landing-screen {
+        padding: 2rem 1rem;
+    }
+    #clock {
+        font-size: 18vw;
+        letter-spacing: -1px;
+    }
+    #date {
+        font-size: 0.85rem;
+        margin-top: 0.6rem;
+    }
+    .enter-hint {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+    .time-display {
+        margin-top: 10vh;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    .header p {
+        font-size: 0.8rem;
+    }
+    .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 6px;
+    }
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    .close-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        margin-left: auto;
+    }
+
+    .card {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+    .card h3 {
+        font-size: 1rem;
+    }
+    .card-tag {
+        font-size: 0.7rem;
+        margin-bottom: 0.6rem;
+    }
+
+    /* 自我介绍卡片在手机上 */
+    .card.span-2.span-row-2 h2 {
+        font-size: 1.1rem;
+    }
+    .card.span-2.span-row-2 h3 {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    /* 分类菜单 (游戏页) */
+    .category-menu {
+        gap: 16px;
+        padding: 10px;
+    }
+    .category-card {
+        min-width: 140px;
+        height: 200px;
+        border-radius: 16px;
+    }
+    .category-title {
+        font-size: 1.3rem;
+    }
+    .category-desc {
+        font-size: 0.75rem;
+    }
+
+    .top-back-btn {
+        top: 16px;
+        left: 16px;
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+
+    /* 分类选择页标题 */
+    #category-layer h1 {
+        font-size: 2rem !important;
+    }
+    #category-layer p {
+        font-size: 0.85rem;
+    }
+
+    /* 游戏列表 */
+    .game-grid-section.active-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        grid-auto-rows: 200px;
+    }
+
+    /* 弹窗 */
+    .modal-content {
+        width: 90%;
+        padding: 16px;
+        border-radius: 16px;
+    }
+    .modal-header h3 {
+        font-size: 1rem;
+    }
+    .modal-large-content {
+        width: 98%;
+        height: 92vh;
+        border-radius: 16px;
+    }
+    .modal-video-content {
+        width: 98%;
+        border-radius: 12px;
+    }
+
+    /* 项目详情弹窗 */
+    .project-detail-layout {
+        flex-direction: column;
+        height: auto;
+    }
+    .project-media {
+        flex: none;
+        width: 100%;
+        min-height: 240px;
+    }
+    .project-info {
+        flex: none;
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding: 16px;
+    }
+    .project-title {
+        font-size: 1.3rem;
+    }
+    .project-desc {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    .project-actions {
+        gap: 10px;
+    }
+    .action-btn {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    /* 轮播图控制按钮 */
+    .carousel-btn {
+        font-size: 1.5rem;
+        padding: 8px 12px;
+    }
+    .btn-prev { left: 8px; }
+    .btn-next { right: 8px; }
+
+    /* 底部footer */
+    footer {
+        font-size: 0.7rem !important;
+        margin-top: 2rem !important;
+    }
+
+    /* 返回按钮 */
+    .back-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* --- 超小屏 (≤ 360px) --- */
+@media (max-width: 360px) {
+    .content-container {
+        padding: 1rem 0.8rem;
+    }
+    .category-card {
+        min-width: 120px;
+        height: 160px;
+    }
+    .category-title {
+        font-size: 1.1rem;
+    }
+    .social-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
 }
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -829,4 +1156,117 @@ a.card {
 .indicator-dot.active {
     background: #fff;
     transform: scale(1.2);
+}
+
+/* =========================================
+   9. 触摸设备优化 (Touch Device Fixes)
+   ========================================= */
+
+/* 触摸设备禁用悬停效果（避免粘滞 hover 问题） */
+@media (hover: none) and (pointer: coarse) {
+    .card.interactive:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--glass-border);
+        box-shadow: none;
+    }
+    .card.interactive:hover img {
+        opacity: 0.6;
+        transform: none;
+    }
+    .card.interactive:active {
+        transform: scale(0.97);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .category-card:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    .category-card:hover img {
+        transform: none;
+        opacity: 0.4;
+    }
+    .category-card:active {
+        transform: scale(0.97);
+    }
+
+    .social-btn:hover {
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text-sub);
+        border-color: var(--glass-border);
+        transform: none;
+        box-shadow: none;
+    }
+    .social-btn:active {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    .close-btn:hover {
+        background: transparent;
+        color: var(--text-sub);
+    }
+    .close-btn:active {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    .back-btn:hover {
+        background: transparent;
+        color: var(--text-sub);
+        border-color: var(--glass-border);
+    }
+    .back-btn:active {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    .top-back-btn:hover {
+        background: rgba(0,0,0,0.3);
+        border-color: rgba(255,255,255,0.3);
+        transform: none;
+    }
+    .top-back-btn:active {
+        background: rgba(255,255,255,0.2);
+        border-color: #fff;
+    }
+
+    .carousel-btn:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .carousel-btn:active {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .copy-btn:hover {
+        background: rgba(255,255,255,0.1);
+        color: var(--text-sub);
+    }
+    .copy-btn:active {
+        background: #fff;
+        color: #000;
+    }
+
+    .action-btn:hover {
+        transform: none;
+    }
+    .btn-primary:hover {
+        background: #fff;
+    }
+    .btn-secondary:hover {
+        background: rgba(255,255,255,0.1);
+    }
+    .btn-primary:active {
+        background: #e0e0e0;
+    }
+    .btn-secondary:active {
+        background: rgba(255,255,255,0.2);
+    }
+}
+
+/* 禁止 iOS 上按钮的默认灰色半透明遮罩 */
+* {
+    -webkit-tap-highlight-color: transparent;
 }

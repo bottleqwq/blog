@@ -23,15 +23,15 @@
         <!-- 返回主页按钮 -->
         <a href="index.html" class="top-back-btn">← 返回主页</a>
 
-        <div style="margin-bottom: 40px; text-align: center;">
-            <h1 style="font-size: 3rem; margin-bottom: 10px;">玩过的游戏</h1>
-            <p>选择一个游戏类别以开始</p>
+        <div style="margin-bottom: 40px; text-align: center; padding: 0 1rem;">
+            <h1 style="font-size: clamp(1.8rem, 6vw, 3rem); margin-bottom: 10px;">玩过的游戏</h1>
+            <p style="font-size: clamp(0.85rem, 3vw, 1rem);">选择一个游戏类别以开始</p>
         </div>
 
         <div class="category-menu">
             <!-- 类别 1: 单机 -->
             <div class="category-card" onclick="openCategory('single')">
-                <img src="游戏图片/单机游戏.png" alt="单机">
+                <img src="游戏图片/单机游戏.png" alt="单机" loading="lazy">
                 <div class="category-content">
                     <div class="category-title">单机游戏</div>
                     <div class="category-desc">Single Player</div>
@@ -40,7 +40,7 @@
 
             <!-- 类别 2: 网游 -->
             <div class="category-card" onclick="openCategory('online')">
-                <img src="游戏图片/网络游戏.jpg" alt="网游">
+                <img src="游戏图片/网络游戏.jpg" alt="网游" loading="lazy">
                 <div class="category-content">
                     <div class="category-title">网络游戏</div>
                     <div class="category-desc">Online Games</div>
@@ -49,7 +49,7 @@
 
             <!-- 类别 3: Galgame -->
             <div class="category-card" onclick="openCategory('galgame')">
-                <img src="游戏图片/Galgame.jpg" alt="Galgame">
+                <img src="游戏图片/Galgame.jpg" alt="Galgame" loading="lazy">
                 <div class="category-content">
                     <div class="category-title">GALGAME</div>
                     <div class="category-desc">Visual Novel</div>
