@@ -1,11 +1,19 @@
 :root {
     --font-display: 'Noto Sans SC', serif;
     --font-body: 'Noto Sans SC', 'Noto Serif SC', sans-serif;
-    --glass-bg: rgba(20, 20, 20, 0.65); /* 深色毛玻璃背景 */
+    --glass-bg: rgba(20, 20, 20, 0.65);
     --glass-border: rgba(255, 255, 255, 0.1);
     --text-main: #f0f0f0;
     --text-sub: #a0a0a0;
     --radius: 16px;
+
+    /* 主题色系统 — 紫罗兰渐变，适配二次元/个人站调性 */
+    --accent: #7c3aed;
+    --accent-light: #a78bfa;
+    --accent-dark: #5b21b6;
+    --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-glow: rgba(124, 58, 237, 0.35);
+    --accent-border: rgba(124, 58, 237, 0.5);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -143,6 +151,54 @@ body.active .glass-overlay {
     padding-top: 0; /* 内容上滑归位 */
 }
 
+/* --- 子页面专用：毛玻璃层直接显示（无需点击进入） --- */
+body.subpage .glass-overlay {
+    opacity: 1;
+    pointer-events: auto;
+    padding-top: 0;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(25px);
+    animation: subpageEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 子页面进入动画：微微上滑淡入 */
+@keyframes subpageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        backdrop-filter: blur(25px);
+    }
+}
+
+/* 卡片图片完整显示（不裁剪，用于主播/其他页面） */
+.card-img-contain img {
+    object-fit: contain !important;
+}
+
+/* --- 鼠标跟随光晕（主页沉浸效果） --- */
+.cursor-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    transition: left 0.15s ease-out, top 0.15s ease-out;
+    opacity: 0;
+    will-change: left, top;
+}
+
+body.active .cursor-glow {
+    opacity: 1;
+}
+
 /* --- 5. Bento Grid 布局 (复用并优化) --- */
 .header {
     display: flex;
@@ -156,6 +212,10 @@ body.active .glass-overlay {
 .header h1 {
     font-family: var(--font-display);
     font-size: 2rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .close-btn {
@@ -168,7 +228,11 @@ body.active .glass-overlay {
     border-radius: 50px;
     transition: all 0.3s;
 }
-.close-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.close-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
 
 /* --- 头部右侧操作栏 --- */
 .header-actions {
@@ -196,10 +260,10 @@ body.active .glass-overlay {
 /* 图标按钮悬停效果 */
 .social-btn:hover {
     background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-3px); /* 悬浮小跳跃效果 */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: var(--accent-light);
+    border-color: var(--accent-border);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--accent-glow);
 }
 
 .bento-grid {
@@ -210,7 +274,7 @@ body.active .glass-overlay {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.05); /* 卡片微透明 */
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius);
     padding: 2rem;
@@ -219,6 +283,22 @@ body.active .glass-overlay {
     justify-content: space-between;
     position: relative;
     overflow: hidden;
+}
+
+/* 卡片图片骨架屏占位（图片加载时显示微光扫过） */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+        rgba(255,255,255,0.02) 25%,
+        rgba(255,255,255,0.08) 50%,
+        rgba(255,255,255,0.02) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+    z-index: -2;
+    pointer-events: none;
 }
 
 .card.interactive {
@@ -232,8 +312,9 @@ body.active .glass-overlay {
 .card.interactive:hover {
     transform: translateY(-8px);
     background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+    border-color: var(--accent-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 25px var(--accent-glow);
 }
 
 a.card {
@@ -255,10 +336,11 @@ a.card {
 
 .card-tag {
     font-size: 0.8rem;
-    color: var(--text-sub);
+    color: var(--accent-light);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .card img {
@@ -293,9 +375,9 @@ a.card {
 }
 
 .back-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--accent);
     color: #fff;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: var(--accent);
 }
 
 .card:hover img { opacity: 0.8; }
@@ -329,9 +411,9 @@ a.card {
 }
 
 .top-back-btn:hover {
-    background: rgba(255,255,255,0.2);
-    border-color: #fff;
-    transform: translateX(-3px); /* 悬停时微微向左动 */
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateX(-3px);
 }
 
 /* --- 三大分类菜单 --- */
@@ -388,8 +470,9 @@ a.card {
 /* 分类卡片悬停效果 */
 .category-card:hover {
     transform: translateY(-15px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+                0 0 30px var(--accent-glow);
+    border-color: var(--accent-border);
 }
 
 .category-card:hover img {
@@ -444,8 +527,14 @@ a.card {
 /* 定义一个缓慢缩放的动画 */
 @keyframes breathe {
     0% { transform: scale(1.0); }
-    50% { transform: scale(1.05); } /* 放大 5% */
+    50% { transform: scale(1.05); }
     100% { transform: scale(1.0); }
+}
+
+/* 图片骨架屏扫描光效 */
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 /* --- 动画关键帧 --- */
@@ -1001,11 +1090,12 @@ a.card {
 
 /* 技术栈/标签胶囊 */
 .tag-badge {
-    background: rgba(255,255,255,0.1);
+    background: rgba(124, 58, 237, 0.2);
+    border: 1px solid rgba(124, 58, 237, 0.3);
     padding: 4px 10px;
     border-radius: 4px;
     font-size: 0.8rem;
-    color: #fff;
+    color: var(--accent-light);
 }
 
 .project-desc {
@@ -1039,11 +1129,13 @@ a.card {
 }
 
 .btn-primary {
-    background: #fff;
-    color: #000;
+    background: var(--accent-gradient);
+    color: #fff;
 }
 .btn-primary:hover {
-    background: #e0e0e0;
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--accent-glow);
 }
 
 .btn-secondary {
@@ -1253,13 +1345,13 @@ a.card {
         transform: none;
     }
     .btn-primary:hover {
-        background: #fff;
+        filter: none;
+    }
+    .btn-primary:active {
+        filter: brightness(1.2);
     }
     .btn-secondary:hover {
         background: rgba(255,255,255,0.1);
-    }
-    .btn-primary:active {
-        background: #e0e0e0;
     }
     .btn-secondary:active {
         background: rgba(255,255,255,0.2);

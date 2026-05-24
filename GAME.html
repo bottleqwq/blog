@@ -14,7 +14,7 @@
 <body>
 
     <!-- 背景图 -->
-    <img id="bg-img" src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/主页图片/bg.jpeg" alt="Background">
+    <img id="bg-img" src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/主页图片/bg.webp" alt="Background">
     
     <!-- 1. 第一层：分类选择页 (代替原来的时钟页) -->
     <!-- 注意：这里的 id 依然叫 landing-trigger 是为了复用 CSS 中的定位逻辑，但我们会修改 JS 取消全屏点击 -->
@@ -31,7 +31,7 @@
         <div class="category-menu">
             <!-- 类别 1: 单机 -->
             <div class="category-card" onclick="openCategory('single')">
-                <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/单机游戏.png" alt="单机" loading="lazy">
+                <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/单机游戏.webp" alt="单机" loading="lazy">
                 <div class="category-content">
                     <div class="category-title">单机游戏</div>
                     <div class="category-desc">Single Player</div>
@@ -40,7 +40,7 @@
 
             <!-- 类别 2: 网游 -->
             <div class="category-card" onclick="openCategory('online')">
-                <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/网络游戏.jpg" alt="网游" loading="lazy">
+                <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/网络游戏.webp" alt="网游" loading="lazy">
                 <div class="category-content">
                     <div class="category-title">网络游戏</div>
                     <div class="category-desc">Online Games</div>
@@ -49,7 +49,7 @@
 
             <!-- 类别 3: Galgame -->
             <div class="category-card" onclick="openCategory('galgame')">
-                <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/Galgame.jpg" alt="Galgame" loading="lazy">
+                <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/Galgame.webp" alt="Galgame" loading="lazy">
                 <div class="category-content">
                     <div class="category-title">GALGAME</div>
                     <div class="category-desc">Visual Novel</div>
@@ -78,110 +78,110 @@
                 <!-- 容器 A: 单机游戏列表 -->
                 <div id="list-single" class="game-grid-section">
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/MC.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/MC.webp">
                         <h3>Minecraft</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">生活就像MC里的矿洞，你永远不知道你看到的是一堆发光地衣还是一堆钻石</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/七日杀.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/七日杀.webp">
                         <h3>七日杀</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/幻兽帕鲁.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/幻兽帕鲁.webp">
                         <h3>幻兽帕鲁</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/杀戮尖塔.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/杀戮尖塔.webp">
                         <h3>杀戮尖塔</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好牌多抓</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/魔法工艺.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/魔法工艺.webp">
                         <h3>魔法工艺</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/逃离鸭克夫.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/逃离鸭克夫.webp">
                         <h3>逃离鸭克夫</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/土豆兄弟.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/土豆兄弟.webp">
                         <h3>土豆兄弟</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">好玩爱玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/星露谷物语.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/星露谷物语.webp">
                         <h3>星露谷物语</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">感觉有点无聊……</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/怪物猎人.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/怪物猎人.webp">
                         <h3>怪物猎人：世界</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩的时间很短</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/鬼泣5.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/鬼泣5.webp">
                         <h3>鬼泣5</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩的时间很短</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/黑神话悟空.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/黑神话悟空.webp">
                         <h3>黑神话：悟空</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩的时间很短</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/戴森球计划.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/戴森球计划.webp">
                         <h3>戴森球计划</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">工厂类型爱玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/神经鹅.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/神经鹅.webp">
                         <h3>神经鹅</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">有意思</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/米塔.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/米塔.webp">
                         <h3>米塔</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩过一段时间</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/胡闹厨房.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/胡闹厨房.webp">
                         <h3>胡闹厨房2</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">没时间联机</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/双影奇境.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/双影奇境.webp">
                         <h3>双影奇境</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">和朋友玩过一段</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/地平线4.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/地平线4.webp">
                         <h3>极限竞速：地平线4</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">玩的时间很短</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/饥荒.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/饥荒.webp">
                         <h3>饥荒</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">和泰拉瑞亚一样不会玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/元气骑士.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/元气骑士.webp">
                         <h3>元气骑士</h3>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/龟龟潜海记.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/龟龟潜海记.webp">
                         <h3>龟龟潜海记</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">增量游戏好玩爱玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/拣爱.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/拣爱.webp">
                         <h3>拣爱</h3>
                     </div>
                     <div class="card span-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/泰拉瑞亚.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/泰拉瑞亚.webp">
                         <h3>一些小众的就不写了</h3>
                     </div>
                 </div>
@@ -189,66 +189,66 @@
                 <!-- 容器 B: 网络游戏列表 -->
                 <div id="list-online" class="game-grid-section">
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/洛克王国.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/洛克王国.webp">
                         <h3>洛克王国:世界</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">节奏好大暂时退游</p>
                     </div>
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/暗黑破坏神4.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/暗黑破坏神4.webp">
                         <h3>暗黑破坏神4</h3>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/原神.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/原神.webp">
                         <h3>原神</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">原神牛逼（已退游）</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/王者荣耀.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/王者荣耀.webp">
                         <h3>王者荣耀</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">现在基本不玩了</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/三角洲.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/三角洲.webp">
                         <h3>三角洲行动</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">朋友叫会玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/金铲铲之战.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/金铲铲之战.webp">
                         <h3>金铲铲之战</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">现在基本不玩了</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/VRC.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/VRC.webp">
                         <h3>VRChat</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">现在基本不玩了</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/公主连结.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/公主连结.webp">
                         <h3>公主连结</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">已退游</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/明日方舟.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/明日方舟.webp">
                         <h3>明日方舟</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">不玩了</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/月圆之夜 .png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/月圆之夜.webp">
                         <h3>月圆之夜</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">打牌好玩</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/奶块.jpeg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/奶块.webp">
                         <h3>奶块</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">已退游</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/百分之一.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/百分之一.webp">
                         <h3>百分之一</h3>
                         <p style="margin-top:10px; color: var(--text-sub); font-size: 0.9rem;">已退游</p>
                     </div>
                     <div class="card span-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/宝可梦.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/宝可梦.webp">
                         <h3>一些小众的就不写了，想到再写</h3>
                     </div>
                 </div>
@@ -256,27 +256,27 @@
                 <!-- 容器 C: GALGAME列表 -->
                 <div id="list-galgame" class="game-grid-section">
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/亚托莉.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/亚托莉.webp">
                         <h3>ATRI -My Dear Moments-</h3>
                     </div>
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/千恋万花.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/千恋万花.webp">
                         <h3>千恋万花</h3>
                     </div>
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/千里饿殍行.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/千里饿殍行.webp">
                         <h3>饿殍：明末千里行</h3>
                     </div>
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/银花.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/银花.webp">
                         <h3>GINKA</h3>
                     </div>
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/狐姬零.jpg">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/狐姬零.webp">
                         <h3>Fox Hime Zero</h3>
                     </div>                                        
                     <div class="card span-2 span-row-2">
-                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/要来点百合吗.png">
+                        <img src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/游戏图片/要来点百合吗.webp">
                         <h3>要来点百合吗 Love Yuri</h3>
                     </div>
                 </div>
