@@ -28,7 +28,7 @@ body {
     animation: fadeIn 0.8s ease forwards;
 }
 
-/* --- 1. 背景层（图片/视频通用） --- */
+/* --- 1. 背景层（定位通用） --- */
 #bg-img,
 #bg-video {
     position: fixed;
@@ -38,8 +38,10 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: -1;
+}
 
-    /* 缓慢呼吸缩放动画，周期 20秒 */
+/* 背景图片缓慢呼吸缩放（子页面静态图适用） */
+#bg-img {
     animation: breathe 20s infinite ease-in-out;
 }
 
@@ -131,10 +133,6 @@ body {
 }
 
 /* --- 4. 激活状态 (JS控制) --- */
-body.active #bg-img,
-body.active #bg-video {
-    transform: scale(1.1); /* 点击后放大一点点，增加沉浸感 */
-}
 
 body.active .landing-screen {
     opacity: 0;
