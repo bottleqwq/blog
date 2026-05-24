@@ -15,8 +15,10 @@
 </head>
 <body>
 
-    <!-- 1. 全屏背景图片 -->
-    <img id="bg-img" src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/主页图片/bg.webp" alt="Background">
+    <!-- 1. 全屏背景视频（自动循环播放，静音） -->
+    <video id="bg-video" autoplay loop muted playsinline poster="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/主页图片/bg.webp">
+        <source src="https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/主页图片/bg.mp4" type="video/mp4">
+    </video>
     <div class="video-overlay"></div>
     <!-- 鼠标跟随光晕（进入主页后显示） -->
     <div class="cursor-glow"></div>
@@ -215,12 +217,12 @@
         qq: {
             title: "添加我的 QQ",
             id: "1523099941",
-            qr: "https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/联系方式/QQ.webp"
+            qr: "https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/联系方式/QQ.webp"
         },
         wechat: {
             title: "添加我的 微信",
             id: "bottle_qwq",
-            qr: "https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/联系方式/微信.webp"
+            qr: "https://cdn.jsdelivr.net/gh/bottleqwq/blog@main/联系方式/微信.webp"
         }
     };
 
