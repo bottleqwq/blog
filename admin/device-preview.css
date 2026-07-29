@@ -1,0 +1,62 @@
+.canvas {
+  overflow: auto;
+}
+
+.canvasbar em {
+  margin-left: 8px;
+  color: #657084;
+  font-style: normal;
+}
+
+.canvasbar button.active {
+  color: #10140a;
+  background: var(--accent);
+}
+
+#deviceFrame {
+  height: 100%;
+  max-width: 100%;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 12px 45px #0008;
+  transition: width .25s ease;
+}
+
+#deviceFrame[data-device="desktop"] { width: 100%; }
+#deviceFrame[data-device="tablet"] { width: 768px; }
+#deviceFrame[data-device="phone"] { width: 390px; }
+
+#deviceFrame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: none;
+}
+
+.preview-tools,
+.device-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.preview-tools {
+  gap: 14px;
+}
+
+.canvasbar .mode-button {
+  padding: 5px 10px;
+  border-color: #3b4351;
+  color: #dce2ec;
+  background: #181d26;
+}
+
+.canvasbar .mode-button.interacting {
+  border-color: var(--accent);
+  color: #10140a;
+  background: var(--accent);
+}
+
+#deviceFrame.is-interacting {
+  box-shadow: 0 0 0 2px var(--accent), 0 12px 45px #0008;
+}
