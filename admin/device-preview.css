@@ -51,6 +51,13 @@
   background: #181d26;
 }
 
+.canvasbar .add-card-button {
+  padding: 5px 10px;
+  border-color: #516822;
+  color: var(--accent);
+  background: #1a2112;
+}
+
 .canvasbar .mode-button.interacting {
   border-color: var(--accent);
   color: #10140a;
